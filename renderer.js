@@ -4,9 +4,12 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+
+// const electron = require("electron");
+// const notifer = require("node-notifier");
+
 const start = document.querySelector("button.start");
 let video = document.querySelector(".camera");
-
 let isShowing = false;
 
 start.addEventListener("click", () => {
@@ -18,15 +21,16 @@ start.addEventListener("click", () => {
         video.hidden = false;
         start.textContent = "Disable Camera";
         isShowing = true;
-        // Notification.requestPermission().then(result => {
-        const notification = new Notification("Camera is Running", {
-          body: "Chrome is accessing it!"
-        });
-        notification.onclick = () => {
-          console.log("Notification clicked");
-        };
-        console.log("notified", notification);
-        // });
+        startnotify();
+        //   // Notification.requestPermission().then(result => {
+        //   const notification = new Notification("Camera is Running", {
+        //     body: "Chrome is accessing it!"
+        //   });
+        //   notification.onclick = () => {
+        //     console.log("Notification clicked");
+        //   };
+        //   console.log("notified", notification);
+        //   // });
       });
     }
   } else {
@@ -34,5 +38,6 @@ start.addEventListener("click", () => {
     video.pause();
     video.hidden = true;
     isShowing = false;
+    endnotify();
   }
 });
