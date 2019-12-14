@@ -19,5 +19,7 @@
   "devDependencies": {
     "electron": "^7.1.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
 }

@@ -29,5 +29,16 @@ function endnotify() {
   });
 }
 
+function filesystem(filename, data) {
+  fs.writeFile(filename, data, err => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Data Saved");
+    }
+  });
+}
+
 window.startnotify = startnotify;
 window.endnotify = endnotify;
+window.savefile = filesystem;
