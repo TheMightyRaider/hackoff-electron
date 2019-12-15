@@ -24,11 +24,18 @@ function startnotify() {
 
 function endnotify() {
   nodifier.notify({
-    title: "Camera is off",
-    message: "Last used by Chrome"
+    title: "Stopped trackig your posture.",
+    message: "See results for your improvement."
   });
 }
 
+function correctpos() {
+  nodifier.notify({
+    title: "Bad posture",
+    message: "Keep your back straight",
+    sound: true
+  });
+}
 function filesystem(filename, data) {
   fs.writeFile(filename, data, err => {
     if (err) {
@@ -42,3 +49,4 @@ function filesystem(filename, data) {
 window.startnotify = startnotify;
 window.endnotify = endnotify;
 window.savefile = filesystem;
+window.correctpos = correctpos;

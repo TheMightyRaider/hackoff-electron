@@ -9,8 +9,13 @@ let mainWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    show: false,
+    title: "Posture Monitor",
+    autoHideMenuBar: true,
+    // backgroundColor: "#2e3238",
+    width: 1536,
+    height: 1000,
+    simpleFullscreen: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js")
       // nodeIntegration: true
@@ -18,7 +23,7 @@ function createWindow() {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile("index.html");
+  mainWindow.loadURL("http://localhost:5000");
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -29,6 +34,10 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+  });
+
+  mainWindow.on("ready-to-show", () => {
+    mainWindow.show();
   });
 }
 
